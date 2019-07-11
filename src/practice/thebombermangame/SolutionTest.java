@@ -14,7 +14,7 @@ public class SolutionTest {
     @Test
     public void testMain() {
         try {
-            System.setIn(new FileInputStream("src/practice/thebombermangame/input/input00.txt"));
+            System.setIn(new FileInputStream("src/practice/thebombermangame/input/input25.txt"));
         } catch(IOException e) {
             System.err.println("IO exception opening input file.");
         }
@@ -24,20 +24,22 @@ public class SolutionTest {
             s.main(args);
             File ourFile = new File("out_path/out.txt");
             Scanner scOur = new Scanner(ourFile); 
-            File correctFile = new File("src/practice/thebombermangame/output/output00.txt");
+            File correctFile = new File("src/practice/thebombermangame/output/output25.txt");
             Scanner scCorrect = new Scanner(correctFile);
             boolean isSame = true;
             int count = 0;
             while (scOur.hasNextLine() && scCorrect.hasNextLine()) {
-                System.out.println(count + " lines are the same.");
                 String ourLine = scOur.next();
                 String correctLine = scCorrect.next();
                     if (!ourLine.equals(correctLine)) {
                         isSame = false;
-                        System.out.println(ourLine);
-                        System.out.println(correctLine);
+                        System.out.println("Our line:" + ourLine);
+                        System.out.println("Correctline: " + correctLine);
                         break;
                     }
+                count++;
+                System.out.println(count + " lines are the same.");
+
             }
             assertEquals(isSame, true);
             scOur.close();
