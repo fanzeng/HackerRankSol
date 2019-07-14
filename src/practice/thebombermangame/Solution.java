@@ -23,13 +23,23 @@ public class Solution {
         int r = grid.length;
         int c = grid[0].length();
         int[][] timeSincePlanted = new int[r][c];
+        char[][] charGrid = new char[r][c];
         
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
                 if (grid[i].charAt(j) == 'O') {
                     timeSincePlanted[i][j] = time-1;
+                    charGrid[i][j] = 'O';
+                } else {
+                    charGrid[i][j] = '.';
                 }
             }
+        }
+        
+        // This is required to satisfy the time limit. 
+        // An important realisation here is the the pattern is repetitive w.r.t. time.
+        if (n > 6) {
+            n = n % 4 + 4;
         }
         
         while(time <= n) {
@@ -43,8 +53,9 @@ public class Solution {
             if (time%2 == 0) {
                 for (int i = 0; i < r; i++) {
                     for (int j = 0; j < c; j++) {
-                        if (grid[i].charAt(j) == '.') {
-                            grid[i]= replaceChar(grid[i], j, 'O');
+                        if (charGrid[i][j] == '.') {
+//                            grid[i]= replaceChar(grid[i], j, 'O');
+                            charGrid[i][j] = 'O';
                             timeSincePlanted[i][j] = -1;
                         }
                     }
@@ -53,7 +64,7 @@ public class Solution {
             
             for (int i = 0; i < r; i++) {
                 for (int j = 0; j < c; j++) {
-                    if (grid[i].charAt(j) == 'O') {
+                    if (charGrid[i][j] == 'O') {
                         timeSincePlanted[i][j]++;
                     } 
                 }
@@ -63,18 +74,23 @@ public class Solution {
             for (int i = 0; i < r; i++) {
                 for (int j = 0; j < c; j++) {
                     if (timeSincePlanted[i][j] == 3) {
-                        grid[i]= replaceChar(grid[i], j, '.');
+//                      grid[i]= replaceChar(grid[i], j, '.');
+                        charGrid[i][j] = '.';  
                         if (i > 0) {
-                            grid[i-1]= replaceChar(grid[i-1], j, '.');
+//                            grid[i-1]= replaceChar(grid[i-1], j, '.');
+                            charGrid[i-1][j] = '.';
                         }
                         if (i < r-1) {
-                            grid[i+1]= replaceChar(grid[i+1], j, '.');
+//                            grid[i+1]= replaceChar(grid[i+1], j, '.');
+                            charGrid[i+1][j] = '.';
                         }
                         if (j > 0) {
-                            grid[i]= replaceChar(grid[i], j-1, '.');
+//                            grid[i]= replaceChar(grid[i], j-1, '.');
+                            charGrid[i][j-1] = '.';
                         }
                         if (j < c-1) {
-                            grid[i]= replaceChar(grid[i], j+1, '.');
+//                            grid[i]= replaceChar(grid[i], j+1, '.');
+                            charGrid[i][j+1] = '.';
                         }
                     } 
                 }
@@ -84,10 +100,15 @@ public class Solution {
             // detonations have occured, because the bombs go off simultaneously.
             for (int i = 0; i < r; i++) {
                 for (int j = 0; j < c; j++) {
-                    if (grid[i].charAt(j) == '.') {
+                    if (charGrid[i][j] == '.') {
                         timeSincePlanted[i][j] = 0;
                     }
                 }
+            }
+            
+            // The following is just for printing.
+            for (int i = 0; i < r; i++) {
+               grid[i] = new String(charGrid[i]);
             }
             
             for (int i = 0; i < r; i++) {
@@ -103,8 +124,13 @@ public class Solution {
                 System.out.println(grid[i]);
             }
             System.out.println("");
-                        
+            // The above is just for printing.
+     
             time++;
+        }
+        
+        for (int i = 0; i < r; i++) {
+            grid[i] = new String(charGrid[i]);
         }
         return grid;
     }
@@ -112,7 +138,11 @@ public class Solution {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
+        System.out.println("System.getenv output_path=");
         System.out.println(System.getenv("OUTPUT_PATH"));
+                System.out.println("System.in is " +System.in.toString());
+                System.out.println("scanner.hasNext() = " +scanner.hasNextLine());
+
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         String[] rcn = scanner.nextLine().split(" ");
