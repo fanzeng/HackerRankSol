@@ -59,7 +59,7 @@
             </classpath>
             <formatter type="brief" usefile="false"/>
             <batchtest fork="yes" todir="${report.dir}">
-                <fileset dir="${src.dir}" includes="**/SolutionTest.java"/>
+                <fileset dir="${src.dir}" includes="**/Do*Test.java"/>
             </batchtest>
         </junit>
     </target>
