@@ -1,4 +1,5 @@
-package practice.thebombermangame;
+package practice.twopluses;
+import practice.thebombermangame.*;
 import common.SolutionTest;
 import common.SolutionTestable;
 import java.io.IOException;
@@ -23,32 +24,47 @@ public class DoAllTest {
     };
 
     static SolutionWrap solutionWrap = new DoAllTest().new SolutionWrap();
-
-    @Ignore
+    
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test0.class})
     public static class Test0 {
         @Test
         public void test0() {
             String testIDString = "00";
-            String inputFileName = "src/practice/thebombermangame/input/input" + testIDString + ".txt";
+            String inputFileName = "src/practice/twopluses/input/input" + testIDString + ".txt";
             String outputFileName = "out_path/output" + testIDString  + ".txt";
-            String correctFileName = "src/practice/thebombermangame/output/output" + testIDString + ".txt";
+            String correctFileName = "src/practice/twopluses/output/output" + testIDString + ".txt";
             SolutionTest solutionTest = new SolutionTest(inputFileName, outputFileName, correctFileName);
             solutionTest.mockSystemAndTest(solutionWrap);
         }
     };
 
-    @Ignore
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test1.class})
     public static class Test1 {
         @Test
         public void test1() {
-            String testIDString = "25";
-            String inputFileName = "src/practice/thebombermangame/input/input" + testIDString + ".txt";
+            String testIDString = "01";
+            String inputFileName = "src/practice/twopluses/input/input" + testIDString + ".txt";
             String outputFileName = "out_path/output" + testIDString  + ".txt";
-            String correctFileName = "src/practice/thebombermangame/output/output" + testIDString + ".txt";
+            String correctFileName = "src/practice/twopluses/output/output" + testIDString + ".txt";
+            SolutionTest solutionTest = new SolutionTest(inputFileName, outputFileName, correctFileName);
+            solutionTest.mockSystemAndTest(solutionWrap);
+        }
+    };
+
+//    @Ignore
+    @RunWith(PowerMockRunner.class)
+    @PrepareForTest({Solution.class, SolutionTest.class, Test2.class})
+    public static class Test2 {
+        @Test
+        public void test1() {
+            String testIDString = "02";
+            String inputFileName = "src/practice/twopluses/input/input" + testIDString + ".txt";
+            String outputFileName = "out_path/output" + testIDString  + ".txt";
+            String correctFileName = "src/practice/twopluses/output/output" + testIDString + ".txt";
             SolutionTest solutionTest = new SolutionTest(inputFileName, outputFileName, correctFileName);
             solutionTest.mockSystemAndTest(solutionWrap);
         }
