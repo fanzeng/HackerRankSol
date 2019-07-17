@@ -138,10 +138,6 @@ public class Solution {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        System.out.println("System.getenv output_path=");
-        System.out.println(System.getenv("OUTPUT_PATH"));
-                System.out.println("System.in is " +System.in.toString());
-                System.out.println("scanner.hasNext() = " +scanner.hasNextLine());
 
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 

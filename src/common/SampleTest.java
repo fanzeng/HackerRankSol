@@ -10,7 +10,7 @@ public class SampleTest {
     public void testMain(SolutionTestable st, String outputFileName, String correctFileName) {
         try {
             String[] args = null;
-            st.runMain(args);
+            st.runSolution(args);
             String outFileName = outputFileName;
             System.out.println("Comparing " + outFileName + " to " + correctFileName + ":");
             File outFile = new File(outFileName);

@@ -1,5 +1,5 @@
 package common;
 
 public interface SolutionTestable {
-    void runMain(String[] args);
+    void runSolution(String[] args);
 }
