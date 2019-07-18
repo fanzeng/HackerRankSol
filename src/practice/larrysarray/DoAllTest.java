@@ -1,4 +1,5 @@
-package practice.thebombermangame;
+package practice.larrysarray;
+import practice.larrysarray.Solution;
 import common.SolutionTest;
 import common.SolutionTestable;
 import java.io.IOException;
@@ -31,9 +32,9 @@ public class DoAllTest {
         @Test
         public void test00() {
             String testIDString = "00";
-            String inputFileName = "src/practice/thebombermangame/input/input" + testIDString + ".txt";
+            String inputFileName = "src/practice/larrysarray/input/input" + testIDString + ".txt";
             String outputFileName = "out_path/output" + testIDString  + ".txt";
-            String correctFileName = "src/practice/thebombermangame/output/output" + testIDString + ".txt";
+            String correctFileName = "src/practice/larrysarray/output/output" + testIDString + ".txt";
             SolutionTest solutionTest = new SolutionTest(inputFileName, outputFileName, correctFileName);
             solutionTest.mockSystemAndTest(solutionWrap);
         }
@@ -44,11 +45,11 @@ public class DoAllTest {
     @PrepareForTest({Solution.class, SolutionTest.class, Test1.class})
     public static class Test1 {
         @Test
-        public void test25() {
-            String testIDString = "25";
-            String inputFileName = "src/practice/thebombermangame/input/input" + testIDString + ".txt";
+        public void test21() {
+            String testIDString = "21";
+            String inputFileName = "src/practice/larrysarray/input/input" + testIDString + ".txt";
             String outputFileName = "out_path/output" + testIDString  + ".txt";
-            String correctFileName = "src/practice/thebombermangame/output/output" + testIDString + ".txt";
+            String correctFileName = "src/practice/larrysarray/output/output" + testIDString + ".txt";
             SolutionTest solutionTest = new SolutionTest(inputFileName, outputFileName, correctFileName);
             solutionTest.mockSystemAndTest(solutionWrap);
         }

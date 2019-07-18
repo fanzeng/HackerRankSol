@@ -20,8 +20,8 @@ public class SampleTest {
             boolean isSame = true;
             int count = 0;
             while (scOutFile.hasNextLine() && scCorrect.hasNextLine()) {
-                String ourLine = scOutFile.next();
-                String correctLine = scCorrect.next();
+                String ourLine = scOutFile.nextLine();
+                String correctLine = scCorrect.nextLine();
                     if (!ourLine.equals(correctLine)) {
                         isSame = false;
                         System.out.println("Our line:" + ourLine);
@@ -31,13 +31,13 @@ public class SampleTest {
                 count++;
                 System.out.println(count + " lines are the same.");
             }
+            if (scOutFile.hasNextLine() || scCorrect.hasNextLine()) isSame = false;
             if (isSame) {
                 System.out.println("They are the same.");
             } else {
                 System.out.println("They are different.");
             }
-            
-            assertEquals(isSame, true);
+            assertEquals(true, isSame);
             scOutFile.close();
             scCorrect.close();
         } catch (IOException e) {
