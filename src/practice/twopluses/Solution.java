@@ -36,27 +36,36 @@ public class Solution {
         return false;
     }    
     
-    static int getMaxProd(int[][] intGrid, int x, int y) {
+    static int getMaxProd(int[][] intGrid, int row, int col) {
         int r = intGrid.length;
         int c = intGrid[0].length;
-        int maxArea2 = 0;
-        int size1 = intGrid[x][y];
-        int area1 = getArea(size1);
+        int maxArea = 0;
+        int maxSize1 = intGrid[row][col];
+        int area1;
         int area2;
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
-                int size2 = intGrid[i][j];
-                if (isOverlap(x, y, size1, i, j, size2, r, c)) continue;
-                area2 = getArea(intGrid[i][j]);
-//                System.out.println("x=" + x + ", y=" + y + ", i=" + i + ", j=" + j + ", area2=" + area2);
-                if (area2 > maxArea2) {
-                    maxArea2 = area2;
+                int maxSize2 = intGrid[i][j];
+                // It is not sufficient to consider only the maximum plus
+                // Because sometimes you can get larger product by sacrificing
+                // the size of this plus to make room for the other plus
+                for (int size1 = 0 ; size1 <= maxSize1; size1++) { 
+                    for (int size2 = 0; size2 <= maxSize2; size2++) {
+                        if (isOverlap(row, col, size1, i, j, size2, r, c)) break;
+                        area1 = getArea(size1);
+                        area2 = getArea(size2);
+                        if (area1*area2 > maxArea) {
+                            maxArea = area1*area2;
+                        }                        
+                    }
                 }
             }
         }
-        return area1*maxArea2;
+        return maxArea;
     }
         
+    // It could be better to rewrite this function into boolean isPlusValid()
+    // Because size of the "plus" has to be increased to its maximum anyway.
     static int getMaxPlus(char[][] charGrid, int i, int j) {
         if (charGrid[i][j] == 'B') return 0;
         int size = 1;
@@ -90,15 +99,17 @@ public class Solution {
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
                 maxPlusSize[i][j] = getMaxPlus(charGrid, i, j);
-//                System.out.print(maxPlusSize[i][j]);
             }
-//            System.out.print("\n");
         }
         int maxProd = 0;
-        for (int i = 0; i <= r/2; i++) {
-            for (int j = 0; j <= c/2; j++) {
+        
+        // Though tempting, it will be incorrect to reduce the size of the loops by half.
+        // Because when calculating the maximum product, the sizes of the pluses are
+        // traversed in a double loop, it is not symetrical for a "plus" to be in the outloop
+        // and the inner loop.
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
                 int maxArea = getMaxProd(maxPlusSize, i, j);
-//                System.out.println("i="  + i + ", j=" + j + ", maxArea=" + maxArea);
                 if (maxArea > maxProd) maxProd = maxArea;
             }
         }
