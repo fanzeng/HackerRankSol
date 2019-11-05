@@ -2,7 +2,9 @@ package common;
 import java.io.*;
 import java.util.*;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
+@Ignore
 public class SampleTest {
     SolutionTestable st;
     public SampleTest() {};

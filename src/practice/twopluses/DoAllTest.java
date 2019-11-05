@@ -24,7 +24,7 @@ public class DoAllTest {
 
     static SolutionWrap solutionWrap = new DoAllTest().new SolutionWrap();
     
-    @Ignore
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test0.class})
     public static class Test0 {
@@ -39,7 +39,7 @@ public class DoAllTest {
         }
     };
 
-    @Ignore
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test1.class})
     public static class Test1 {
@@ -54,7 +54,7 @@ public class DoAllTest {
         }
     };
 
-    @Ignore
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test2.class})
     public static class Test2 {
@@ -69,7 +69,7 @@ public class DoAllTest {
         }
     };
     
-    @Ignore
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test3.class})
     public static class Test3 {
@@ -84,7 +84,7 @@ public class DoAllTest {
         }
     };
     
-    @Ignore
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test4.class})
     public static class Test4 {
@@ -99,7 +99,7 @@ public class DoAllTest {
         }
     };
     
-    @Ignore
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test5.class})
     public static class Test5 {
@@ -114,7 +114,7 @@ public class DoAllTest {
         }
     };
     
-    @Ignore
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test6.class})
     public static class Test6 {
@@ -129,7 +129,7 @@ public class DoAllTest {
         }
     };
     
-    @Ignore
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test7.class})
     public static class Test7 {
@@ -144,7 +144,7 @@ public class DoAllTest {
         }
     };   
     
-    @Ignore
+//    @Ignore
     @RunWith(PowerMockRunner.class)
     @PrepareForTest({Solution.class, SolutionTest.class, Test8.class})
     public static class Test8 {
