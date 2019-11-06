@@ -16,6 +16,12 @@
             <fileset dir="../junit/">
                 <include name="**/*" />
             </fileset>
+            <fileset dir="../powermock/">
+                <include name="**/*" />
+            </fileset>
+            <fileset dir="../byte-buddy/">
+                <include name="**/*" />
+            </fileset>
         </path>
 
 	<target name="clean">
