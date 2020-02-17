@@ -22,7 +22,7 @@ public class DoAllTest {
             Solution s = new Solution();
             s.main(new String[0]);
             System.out.flush();
-            String correctString = "0.612";
+            String correctString = "78.288";
             assertEquals(correctString, baos.toString());
         } finally {
           System.setIn(stdin);

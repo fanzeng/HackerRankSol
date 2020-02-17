@@ -30,7 +30,7 @@ public class DoAllTest {
             Solution s = new Solution();
             s.main(new String[0]);
             System.out.flush();
-            String correctString = "105.22\n142.68\n132.94\n129.71";
+            String correctString = "105.21\n142.67\n132.94\n129.70\n";
             assertEquals(correctString, baos.toString());
         } finally {
           System.setIn(stdin);
