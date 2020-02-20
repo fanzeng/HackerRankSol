@@ -24,9 +24,9 @@ public class Matrix {
         }
         return t;
     }
-    public Matrix minor(int i, int j) throws Exception {
+    public Matrix minor(int i, int j) throws IllegalArgumentException {
         if (rows < 2 || cols < 2) {
-            throw new Exception(
+            throw new IllegalArgumentException(
                 "cannot take minor for matrix of size "
                  + rows + "x" + cols + "."
             );
@@ -50,9 +50,11 @@ public class Matrix {
         return minor;
     }
     
-    public double det() throws Exception {
+    public double det() throws IllegalArgumentException {
         if (rows != cols) {
-            throw new Exception("cannot take det for non-square matrix.");
+            throw new IllegalArgumentException (
+                "cannot take det for non-square matrix."
+            );
         }
         if (rows == 1) {
             return arr[0][0];
@@ -72,11 +74,16 @@ public class Matrix {
         return d;
     }
     
-    public Matrix block(int r0, int r1, int c0, int c1) throws Exception {
+    public Matrix block(
+        int r0,
+        int r1,
+        int c0,
+        int c1
+    ) throws IllegalArgumentException {
         int new_rows = r1 - r0;
         int new_cols = c1 - c0;
         if(new_rows <= 0 || new_cols <= 0) {
-            throw new Exception("invalid block size.");
+            throw new IllegalArgumentException("invalid block size.");
         }
         Matrix b = new Matrix(new_rows, new_cols);
         for (int i = 0; i < b.rows; i++) {
@@ -87,11 +94,11 @@ public class Matrix {
         return b;
     }
     
-    public Matrix adjugate() throws Exception {
+    public Matrix adjugate() throws IllegalArgumentException {
         return cofactor().transpose();
     }
     
-    public Matrix cofactor() throws Exception {
+    public Matrix cofactor() throws IllegalArgumentException {
         Matrix cof = new Matrix(rows, cols);
         for (int i = 0; i < cof.rows; i++) {
             for (int j = 0; j < cof.cols; j++) {
@@ -107,10 +114,10 @@ public class Matrix {
         return cof;
     }
     
-    public Matrix inv() throws Exception {
+    public Matrix inv() throws IllegalArgumentException {
         double det = det();
         if (det == 0) {
-            throw new Exception("not invertable, det = 0.");
+            throw new IllegalArgumentException("not invertable, det = 0.");
         }
         return adjugate().scale(1./det());
     }
@@ -147,7 +154,7 @@ public class Matrix {
     }
     
     // convert vector to 1d array
-    public double[] toArray1D() throws Exception {
+    public double[] toArray1D() throws IllegalArgumentException {
         double[] arr1D;
 
         if (rows == 1) {
@@ -158,7 +165,7 @@ public class Matrix {
                 arr1D[i] = arr[i][0];
             }
         } else {
-            throw new Exception(
+            throw new IllegalArgumentException(
                 "only 1d vectors can be converted to 1d array."
                 + "size of matrix = " + rows + "x" + cols + "."
             );
@@ -209,12 +216,24 @@ public class Matrix {
             System.out.println("m.block(0, 3, 1, 4).cofactor() = "  + m.block(0, 3, 1, 4).cofactor());
             System.out.println("m.block(0, 3, 1, 4).adjugate() = "  + m.block(0, 3, 1, 4).adjugate());
             System.out.println("m.mul(n).block(0, 2, 0, 2) = "  + m.mul(n).block(0, 2, 0, 2).inv());
+        } catch(Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        // lines below are supposed to cause exceptions.
 
-            // lines below are supposed to cause exceptions.
+        try {
             System.out.println("new Matrix(1, 2).minor(1,1) = "  + new Matrix(1, 2).minor(1,1));
+        } catch(Exception e) {
+            System.out.println(e.toString());
+        }
+        try {
             System.out.println("m.det() = "  + m.det());
+        } catch(Exception e) {
+            System.out.println(e.toString());
+        }
+        try {
             System.out.println("m.block(0, 3, 1, 3).inv() = "  + m.block(0, 3, 1, 4).inv());
-
         } catch(Exception e) {
             System.out.println(e.toString());
         }
